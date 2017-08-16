@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44B722B0-70CE-4CF5-A454-2B1A430F3593}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Exercises</RootNamespace>
+    <AssemblyName>Exercises</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
+    <Compile Include="Algorithms\Implementation\between-two-sets.cs" />
+    <Compile Include="Algorithms\Implementation\bon-appetit.cs" />
+    <Compile Include="Algorithms\Implementation\breaking-best-and-worst-records.cs" />
+    <Compile Include="Algorithms\Implementation\cats-and-a-mouse.cs" />
+    <Compile Include="Algorithms\Implementation\counting-valleys.cs" />
+    <Compile Include="Algorithms\Implementation\day-of-the-programmer.cs" />
+    <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
+    <Compile Include="Algorithms\Implementation\drawing-book.cs" />
+    <Compile Include="Algorithms\Implementation\electronics-shop.cs" />
+    <Compile Include="Algorithms\Implementation\grading.cs" />
+    <Compile Include="Algorithms\Implementation\kangaroo.cs" />
+    <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
+    <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
+    <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
+    <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
+    <Compile Include="Algorithms\Warmup\a-very-big-sum.cs" />
+    <Compile Include="Algorithms\Warmup\birthday-cake-candles.cs" />
+    <Compile Include="Algorithms\Warmup\compare-the-triplets.cs" />
+    <Compile Include="Algorithms\Warmup\diagonal-difference.cs" />
+    <Compile Include="Algorithms\Warmup\mini-max-sum.cs" />
+    <Compile Include="Algorithms\Warmup\plus-minus.cs" />
+    <Compile Include="Algorithms\Warmup\staircase.cs" />
+    <Compile Include="Algorithms\Warmup\time-conversion.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Algorithms\Warmup\simple-array-sum.cpp" />
+    <Content Include="Algorithms\Warmup\solve-me-first.c" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
