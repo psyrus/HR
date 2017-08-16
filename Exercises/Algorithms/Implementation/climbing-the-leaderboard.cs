@@ -19,42 +19,49 @@ class Solution
         int m = Convert.ToInt32(Console.ReadLine());
         string[] alice_temp = Console.ReadLine().Split(' ');
         int[] alice = Array.ConvertAll(alice_temp, Int32.Parse);
-        // your code goes here
 
+        // Set up tracking variables
         int[] alicePos = new int[m];
-        int currentAliceScoreIndex = m-1;
+        int currentAliceScoreIndex = m - 1;
         int currentCheckIndex = 0;
-        int currentScore = 0;
+        int savedScore = 0;
         int currentRank = 1;
 
+        // Loop through the arrays, comparing the scores to determine alice's score's position on the leaderboard.
+        // Loops forward through the scores array, but backwards through Alice's scores
         while (currentAliceScoreIndex >= 0 && currentCheckIndex < n)
         {
-            if (scores[currentCheckIndex] < currentScore)
+            // Only increment the rank when we start looking at the next leaderboard score (tied scores are ignored)
+            if (savedScore > scores[currentCheckIndex])
             {
                 currentRank++;
-
-                Console.WriteLine(String.Format("***Increasing observed rank by 1 to: {0}***", currentRank));
             }
+            savedScore = scores[currentCheckIndex];
 
-            Console.WriteLine(String.Format("Alice[{0}] ({1}) >= Scores[{2}] ({3}) ?", currentAliceScoreIndex, alice[currentAliceScoreIndex], currentCheckIndex, scores[currentCheckIndex]));
+            // If Alice's score is higher or equal, her current score's position will be the same as the current rank on the leaderboard.
+            // Otherwise, move to the next score on the leaderboard
             if (alice[currentAliceScoreIndex] >= scores[currentCheckIndex])
             {
-                Console.WriteLine(String.Format("\tYes! -> Setting Alice[{0}] to Rank: {1}", currentAliceScoreIndex, currentRank));
                 alicePos[currentAliceScoreIndex] = currentRank;
                 currentAliceScoreIndex--;
-                Console.WriteLine(String.Format("\tDecrementing Alice's index"));
+            }
+            else
+            {
+                currentCheckIndex++;
+                continue;
             }
 
-            Console.WriteLine(String.Format("\tSetting CurrentScore to: {0}", scores[currentCheckIndex]));
-
-            currentScore = scores[currentCheckIndex];
-            currentCheckIndex++;
         }
-        if (alicePos[currentAliceScoreIndex] == 0)
+
+        // A final check in case some of Alice's scores were lower than the rest of the leaderboard,
+        // in which case we have to rank all those scores as the lowest
+        while (currentAliceScoreIndex >= 0)
         {
-            Console.WriteLine(String.Format("The first score was the lowest in the group, setting appropriately."));
-            currentRank++;
-            alicePos[currentAliceScoreIndex] = currentRank;
+            if (alicePos[currentAliceScoreIndex] == 0)
+            {
+                alicePos[currentAliceScoreIndex] = currentRank + 1;
+                currentAliceScoreIndex--;
+            }
         }
 
         Console.WriteLine(String.Join("\n", alicePos));
