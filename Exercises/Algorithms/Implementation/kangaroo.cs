@@ -11,7 +11,7 @@ class Solution {
             return "NO";
         }
         int maxJumps = 10000;
-        
+
         int k1Pos = x1;
         int k2Pos = x2;
         for(int i = 0; i < maxJumps; i++)
