@@ -51,6 +51,7 @@
     <Compile Include="Algorithms\Implementation\climbing-the-leaderboard.cs" />
     <Compile Include="Algorithms\Implementation\counting-valleys.cs" />
     <Compile Include="Algorithms\Implementation\day-of-the-programmer.cs" />
+    <Compile Include="Algorithms\Implementation\designer-pdf-viewer.cs" />
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
     <Compile Include="Algorithms\Implementation\drawing-book.cs" />
     <Compile Include="Algorithms\Implementation\electronics-shop.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
+    <Compile Include="Algorithms\Implementation\the-hurdle-race.cs" />
+    <Compile Include="Algorithms\Implementation\utopian-tree.cs" />
     <Compile Include="Algorithms\Warmup\a-very-big-sum.cs" />
     <Compile Include="Algorithms\Warmup\birthday-cake-candles.cs" />
     <Compile Include="Algorithms\Warmup\compare-the-triplets.cs" />
