@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\circular-array-rotation.cs" />
     <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
     <Compile Include="Algorithms\Implementation\between-two-sets.cs" />
     <Compile Include="Algorithms\Implementation\bon-appetit.cs" />
@@ -59,7 +60,9 @@
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
+    <Compile Include="Algorithms\Implementation\save-the-prisoner.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
+    <Compile Include="Algorithms\Implementation\strange-advertising.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
     <Compile Include="Algorithms\Implementation\the-hurdle-race.cs" />
     <Compile Include="Algorithms\Implementation\utopian-tree.cs" />
