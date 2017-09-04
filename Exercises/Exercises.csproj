@@ -58,7 +58,9 @@
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
     <Compile Include="Algorithms\Implementation\drawing-book.cs" />
     <Compile Include="Algorithms\Implementation\electronics-shop.cs" />
+    <Compile Include="Algorithms\Implementation\find-digits.cs" />
     <Compile Include="Algorithms\Implementation\grading.cs" />
+    <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\permutation-equation.cs" />
