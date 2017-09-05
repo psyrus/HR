@@ -17,13 +17,24 @@ class Solution
         string[] tokens_n = Console.ReadLine().Split(' ');
         int numEntries = Convert.ToInt32(tokens_n[0]);
         int timesRotated = Convert.ToInt32(tokens_n[1]);
+        timesRotated = timesRotated % numEntries;
         int queriesCount = Convert.ToInt32(tokens_n[2]);
         string[] a_temp = Console.ReadLine().Split(' ');
         int[] a = Array.ConvertAll(a_temp, Int32.Parse);
         for (int a0 = 0; a0 < queriesCount; a0++)
         {
             int indexToCheck = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(a[(indexToCheck + timesRotated) % numEntries]);
+            int rotatedIndex = Math.Abs((numEntries + indexToCheck - timesRotated) % numEntries);
+            //try
+            //{
+            //    Console.WriteLine($"{numEntries} + ({indexToCheck} - {timesRotated}) % {numEntries} -> {rotatedIndex} => {a[rotatedIndex]}");
+            //}
+            //catch (Exception)
+            //{
+            //    Console.WriteLine($"Error line: {numEntries} + ({indexToCheck} - {timesRotated}) % {numEntries} -> {rotatedIndex} => Error");
+            //}
+
+            Console.WriteLine(a[rotatedIndex]);
         }
     }
 }
