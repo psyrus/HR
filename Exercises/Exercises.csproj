@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Implementation\angry-professor.cs" />
+    <Compile Include="Algorithms\Implementation\append-and-delete.cs" />
     <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
     <Compile Include="Algorithms\Implementation\beautiful-days-at-the-movies.cs" />
     <Compile Include="Algorithms\Implementation\between-two-sets.cs" />
