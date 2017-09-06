@@ -54,6 +54,7 @@
     <Compile Include="Algorithms\Implementation\circular-array-rotation.cs" />
     <Compile Include="Algorithms\Implementation\climbing-the-leaderboard.cs" />
     <Compile Include="Algorithms\Implementation\counting-valleys.cs" />
+    <Compile Include="Algorithms\Implementation\cut-the-sticks.cs" />
     <Compile Include="Algorithms\Implementation\day-of-the-programmer.cs" />
     <Compile Include="Algorithms\Implementation\designer-pdf-viewer.cs" />
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
