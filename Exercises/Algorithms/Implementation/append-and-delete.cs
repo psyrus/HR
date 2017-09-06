@@ -25,12 +25,12 @@ class Solution
             Console.WriteLine("Yes");
             return;
         }
-        //If the # of different characters (diff from s + (t.length - sameChars)) is equal to k
+
         int diffChars = getDiffChars(s, t);
         //Console.WriteLine($"K={k}");
         //Console.WriteLine($"diff={diffChars}");
 
-        if (k >= diffChars && (diffChars != 1 && k != 2) && (k - diffChars) % 2 == 0)
+        if (k >= diffChars && (k - diffChars) % 2 == 0)
         {
             Console.WriteLine("Yes");
             return;

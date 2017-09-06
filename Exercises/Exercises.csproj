@@ -63,10 +63,12 @@
     <Compile Include="Algorithms\Implementation\grading.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
+    <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\permutation-equation.cs" />
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
     <Compile Include="Algorithms\Implementation\save-the-prisoner.cs" />
+    <Compile Include="Algorithms\Implementation\sherlock-and-squares.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
     <Compile Include="Algorithms\Implementation\strange-advertising.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
