@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,7 @@
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
     <Compile Include="Algorithms\Implementation\drawing-book.cs" />
     <Compile Include="Algorithms\Implementation\electronics-shop.cs" />
+    <Compile Include="Algorithms\Implementation\extra-long-factorials.cs" />
     <Compile Include="Algorithms\Implementation\find-digits.cs" />
     <Compile Include="Algorithms\Implementation\grading.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
