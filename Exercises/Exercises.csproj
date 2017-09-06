@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Implementation\angry-professor.cs" />
+    <Compile Include="Algorithms\Implementation\append-and-delete.cs" />
     <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
     <Compile Include="Algorithms\Implementation\beautiful-days-at-the-movies.cs" />
     <Compile Include="Algorithms\Implementation\between-two-sets.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Algorithms\Implementation\circular-array-rotation.cs" />
     <Compile Include="Algorithms\Implementation\climbing-the-leaderboard.cs" />
     <Compile Include="Algorithms\Implementation\counting-valleys.cs" />
+    <Compile Include="Algorithms\Implementation\cut-the-sticks.cs" />
     <Compile Include="Algorithms\Implementation\day-of-the-programmer.cs" />
     <Compile Include="Algorithms\Implementation\designer-pdf-viewer.cs" />
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
@@ -64,10 +66,12 @@
     <Compile Include="Algorithms\Implementation\grading.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
+    <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\permutation-equation.cs" />
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
     <Compile Include="Algorithms\Implementation\save-the-prisoner.cs" />
+    <Compile Include="Algorithms\Implementation\sherlock-and-squares.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
     <Compile Include="Algorithms\Implementation\strange-advertising.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
