@@ -19,18 +19,10 @@ class Solution
             int[] numbers = Array.ConvertAll(Console.ReadLine().Split(' '), Int32.Parse);
 
             int lowRoot = (int)Math.Ceiling(Math.Sqrt(numbers[0]));
-            int highRoot = (int)Math.Ceiling(Math.Sqrt(numbers[1]));
+            int highRoot = (int)Math.Floor(Math.Sqrt(numbers[1]));
 
-            int total = highRoot - lowRoot;
+            int total = highRoot - lowRoot + 1;
 
-            //if (numbers[0] == lowRoot * lowRoot)
-            //{
-            //    total += 1;
-            //}
-            //else if (numbers[1] == highRoot * highRoot)
-            //{
-            //    total += 1;
-            //}
             Console.WriteLine(total);
             //Console.WriteLine($"Low: {lowRoot} | High: {highRoot} \n");
         }
