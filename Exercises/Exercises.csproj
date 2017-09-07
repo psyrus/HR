@@ -68,6 +68,7 @@
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
     <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
+    <Compile Include="Algorithms\Implementation\non-divisible-subset.cs" />
     <Compile Include="Algorithms\Implementation\permutation-equation.cs" />
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
     <Compile Include="Algorithms\Implementation\save-the-prisoner.cs" />
