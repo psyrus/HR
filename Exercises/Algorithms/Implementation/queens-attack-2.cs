@@ -42,11 +42,11 @@ class Solution
     private static int RunRayTraces(Chessboard board)
     {
         int possibleAttackSquares = 0;
-        for (int i = 1; i >= -1; i++)
+        for (int i = 1; i >= -1; i--)
         {
-            for (int j = 1; j >= -1; j++)
+            for (int j = 1; j >= -1; j--)
             {
-                if (i == 0)
+                if (i == 0 && j == 0)
                 {
                     continue;
                 }
@@ -58,14 +58,17 @@ class Solution
 
     private static int RayTrace(Chessboard board, int i, int j)
     {
+        //Console.WriteLine($"Testing col[{i}] | row[{j}]");
         int totalValidSquares = 0;
-        Position testPos = board.queenPosition;
+        Position testPos = board.queenPosition.Copy();
         testPos.Alter(i, j);
         while (board.isValid(testPos))
         {
+            //Console.WriteLine("\t It was valid");
             totalValidSquares++;
             testPos.Alter(i, j);
         }
+        //Console.WriteLine("\t**It was invalid");
         return totalValidSquares;
     }
 
@@ -102,12 +105,22 @@ class Solution
             this.colPos += i;
             this.rowPos += j;
         }
+
+        internal Position Copy()
+        {
+            return new Position(colPos, rowPos);
+        }
+
+        internal Tuple<int, int> ToIndexTuple()
+        {
+            return new Tuple<int, int>(ColIndex, RowIndex);
+        }
     }
 
     public class Chessboard
     {
         int size;
-        Piece[,] squares;
+        Dictionary<Tuple<int, int>, Piece> squares;
         public Position queenPosition;
 
         public enum Piece
@@ -119,12 +132,13 @@ class Solution
         public Chessboard(int n)
         {
             this.size = n;
-            squares = new Piece[size,size];
+            squares = new Dictionary<Tuple<int, int>, Piece>();
+
         }
 
         public void AddPiece(Position itemPos, Piece pieceType)
         {
-            squares[itemPos.ColIndex, itemPos.RowIndex] = pieceType;
+            squares[itemPos.ToIndexTuple()] = pieceType;
             if (pieceType == Piece.Queen)
             {
                 queenPosition = itemPos;
@@ -133,12 +147,13 @@ class Solution
 
         public bool IsEmpty(Position square)
         {
-            return squares[square.ColIndex, square.RowIndex] == Piece.Empty;
+            return !squares.ContainsKey(square.ToIndexTuple()) || squares[square.ToIndexTuple()] == Piece.Empty;
         }
 
         public bool isValid(Position attempt)
         {
-            return attempt.ColIndex <= size && attempt.RowIndex <= size && IsEmpty(attempt);
+            //Console.WriteLine($"\t Testing if Position[{attempt.ColIndex},{attempt.RowIndex}] is valid.");
+            return attempt.ColIndex < size && attempt.ColIndex >= 0 && attempt.RowIndex < size && attempt.RowIndex >= 0 && IsEmpty(attempt);
         }
     }
 }
