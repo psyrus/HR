@@ -39,9 +39,16 @@ class Solution
         Console.WriteLine(RunRayTraces(board));
     }
 
+    /// <summary>
+    /// Tests the 8 directions on the board from the queen's origin to see how many total valid spaces the queen can move to.
+    /// </summary>
+    /// <param name="board">Preinitialized chess board with a queen position.</param>
+    /// <returns></returns>
     private static int RunRayTraces(Chessboard board)
     {
         int possibleAttackSquares = 0;
+        //The 8 directions are (column change, row change) -> 0,1 | 0,-1 | 1,1 | 1,-1 | 1,0 | -1,1 | -1,-1 | -1,0
+        //Using loops, we don't have to hardcode it.
         for (int i = 1; i >= -1; i--)
         {
             for (int j = 1; j >= -1; j--)
@@ -56,19 +63,23 @@ class Solution
         return possibleAttackSquares;
     }
 
-    private static int RayTrace(Chessboard board, int i, int j)
+    /// <summary>
+    /// Runs a single line trace originating from the queen's position, going in the direction set by colChange and rowChange until it hits an obstacle.
+    /// </summary>
+    /// <param name="board">Preinitialized chess board with a queen position.</param>
+    /// <param name="colChange">Rate of change of column move</param>
+    /// <param name="rowChange">Rate of change of row move</param>
+    /// <returns></returns>
+    private static int RayTrace(Chessboard board, int colChange, int rowChange)
     {
-        //Console.WriteLine($"Testing col[{i}] | row[{j}]");
         int totalValidSquares = 0;
         Position testPos = board.queenPosition.Copy();
-        testPos.Alter(i, j);
+        testPos.Alter(colChange, rowChange);
         while (board.isValid(testPos))
         {
-            //Console.WriteLine("\t It was valid");
             totalValidSquares++;
-            testPos.Alter(i, j);
+            testPos.Alter(colChange, rowChange);
         }
-        //Console.WriteLine("\t**It was invalid");
         return totalValidSquares;
     }
 

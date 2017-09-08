@@ -17,22 +17,41 @@ class Solution
         int k = firstLine[1];
 
         int[] numberSet = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-
+        
+        int longestSetLength = 0;
         //Test each set
         for (int i = 0; i < numItems; i++)
         {
-            int thisOne = numberSet[i];
+            int baseLineCheck = numberSet[i];
             int[] validNumbers = new int[numItems];
-            int index = 0;
+            validNumbers[0] = baseLineCheck;
+            int index = 1;
             for (int j = 0; j < numItems; j++)
             {
-                if ((numberSet[j] + thisOne) % k == 0)
+                int currentTest = numberSet[j];
+                if (currentTest != baseLineCheck && (currentTest + baseLineCheck) % k != 0)
                 {
-                    validNumbers[index] = numberSet[j];
-                    index++;
+                    bool isValid = true;
+                    for (int x = 0; x < validNumbers.Length; x++)
+                    {
+                        if ((currentTest + validNumbers[x]) % k == 0)
+                        {
+                            isValid = false;
+                        }
+                    }
+                    if (isValid)
+                    {
+                        validNumbers[index] = currentTest;
+                        index++;
+                    }
                 }
             }
-            Console.WriteLine(String.Join(" ", validNumbers));
+            //Console.WriteLine(baseLineCheck + ": " + String.Join(" ", validNumbers));
+            if (index > longestSetLength)
+            {
+                longestSetLength = index;
+            }
         }
+        Console.WriteLine(longestSetLength);
     }
 }
