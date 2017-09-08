@@ -17,41 +17,49 @@ class Solution
         int k = firstLine[1];
 
         int[] numberSet = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-        
+        HashSet<int> alreadySeen = new HashSet<int>();
         int longestSetLength = 0;
         //Test each set
         for (int i = 0; i < numItems; i++)
         {
-            int baseLineCheck = numberSet[i];
-            int[] validNumbers = new int[numItems];
-            validNumbers[0] = baseLineCheck;
-            int index = 1;
-            for (int j = 0; j < numItems; j++)
+            int baseLine = numberSet[i];
+
+            if (alreadySeen.Contains(baseLine))
             {
-                int currentTest = numberSet[j];
-                if (currentTest != baseLineCheck && (currentTest + baseLineCheck) % k != 0)
+                continue;
+            }
+
+            int[] theseValid = new int[numberSet.Length];
+            theseValid[0] = baseLine;
+            int theseValidIndex = 1;
+            foreach (var item in numberSet)
+            {
+                if (item != baseLine && isValidInGroup(item, theseValid, k))
                 {
-                    bool isValid = true;
-                    for (int x = 0; x < validNumbers.Length; x++)
-                    {
-                        if ((currentTest + validNumbers[x]) % k == 0)
-                        {
-                            isValid = false;
-                        }
-                    }
-                    if (isValid)
-                    {
-                        validNumbers[index] = currentTest;
-                        index++;
-                    }
+                    theseValid[theseValidIndex] = item;
+                    theseValidIndex++;
                 }
             }
-            //Console.WriteLine(baseLineCheck + ": " + String.Join(" ", validNumbers));
-            if (index > longestSetLength)
+            Console.WriteLine(baseLine + ": " + String.Join(" ", theseValid));
+            alreadySeen.UnionWith(theseValid);
+
+            if (theseValidIndex > longestSetLength)
             {
-                longestSetLength = index;
+                longestSetLength = theseValidIndex;
             }
         }
         Console.WriteLine(longestSetLength);
+    }
+
+    private static bool isValidInGroup(int item, int[] theseValid, int divisor)
+    {
+        foreach (var validItem in theseValid)
+        {
+            if ((item + validItem) % divisor == 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
