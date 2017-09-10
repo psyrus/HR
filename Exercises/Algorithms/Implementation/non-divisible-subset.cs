@@ -16,50 +16,36 @@ class Solution
         int numItems = firstLine[0];
         int k = firstLine[1];
 
+        if (k == 1 && numItems > 0)
+        {
+            Console.WriteLine("1");
+        }
+
         int[] numberSet = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-        HashSet<int> alreadySeen = new HashSet<int>();
-        int longestSetLength = 0;
+        int[] remainderGroupings = new int[k];
+        int longestSetIndex = 0;
         //Test each set
         for (int i = 0; i < numItems; i++)
         {
             int baseLine = numberSet[i];
+            int remainderGroup = GetRemainderGroup(baseLine, k);
 
-            if (alreadySeen.Contains(baseLine))
-            {
-                continue;
-            }
-
-            int[] theseValid = new int[numberSet.Length];
-            theseValid[0] = baseLine;
-            int theseValidIndex = 1;
-            foreach (var item in numberSet)
-            {
-                if (item != baseLine && isValidInGroup(item, theseValid, k))
-                {
-                    theseValid[theseValidIndex] = item;
-                    theseValidIndex++;
-                }
-            }
-            Console.WriteLine(baseLine + ": " + String.Join(" ", theseValid));
-            alreadySeen.UnionWith(theseValid);
-
-            if (theseValidIndex > longestSetLength)
-            {
-                longestSetLength = theseValidIndex;
-            }
+            remainderGroupings[remainderGroup]++;
         }
-        Console.WriteLine(longestSetLength);
+
+        int max = 0;
+        //Work out which is the bigger of the two compliments of remaindergroupings subsets, and take that value. Add it to the total
+        for (int i = 1; i <= remainderGroupings.Length/2; i++)
+        {
+            int thisOne = remainderGroupings[i] > remainderGroupings[k - i] ? remainderGroupings[i] : remainderGroupings[k - i];
+            max += thisOne;
+            Console.WriteLine($"{i}:{remainderGroupings[i]} vs {k-i}:{remainderGroupings[k-i]} => {thisOne}");
+        }
+        Console.WriteLine(max);
     }
 
-    private static bool isValidInGroup(int item, int[] theseValid, int divisor)
+    private static int GetRemainderGroup(int baseLine, int k)
     {
-        foreach (var validItem in theseValid)
-        {
-            if ((item + validItem) % divisor == 0)
-            {
-                return false;
-            }
-        }
-        return true;
+        return (int)(Math.Ceiling((double)baseLine / (double)k) * k - baseLine);
     }
 }
