@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Implementation\acm-icpc-team.cs" />
     <Compile Include="Algorithms\Implementation\angry-professor.cs" />
     <Compile Include="Algorithms\Implementation\append-and-delete.cs" />
     <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
