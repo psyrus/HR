@@ -37,22 +37,37 @@ class Solution
 
         Console.WriteLine(rows);
         Console.WriteLine(columns);
-
-        int curColumn = 0;
-
-        string[] words = new string[columns];
-        foreach (var character in s)
+        int coveredCharacters = 0;
+        int currentIndex = 0;
+        while (coveredCharacters < length)
         {
-            words[curColumn] += character;
+            Console.Write(s[currentIndex]);
+            int newIndex = (currentIndex + columns);
 
-            curColumn++;
-            if (curColumn >= columns)
+            if (newIndex >= length)
             {
-                curColumn = 0;
+                newIndex = newIndex % length + 1;
+                Console.Write(" ");
             }
-
+            currentIndex = newIndex;
+            coveredCharacters++;
         }
 
-        Console.WriteLine(String.Join(" ", words));
+        //int curColumn = 0;
+
+        //string[] words = new string[columns];
+        //foreach (var character in s)
+        //{
+        //    words[curColumn] += character;
+
+        //    curColumn++;
+        //    if (curColumn >= columns)
+        //    {
+        //        curColumn = 0;
+        //    }
+
+        //}
+
+        //Console.WriteLine(String.Join(" ", words));
     }
 }
