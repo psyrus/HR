@@ -72,6 +72,7 @@
     <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\non-divisible-subset.cs" />
+    <Compile Include="Algorithms\Implementation\organizing-containers-of-balls.cs" />
     <Compile Include="Algorithms\Implementation\permutation-equation.cs" />
     <Compile Include="Algorithms\Implementation\picking-numbers.cs" />
     <Compile Include="Algorithms\Implementation\queens-attack-2.cs" />
