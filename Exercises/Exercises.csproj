@@ -62,6 +62,7 @@
     <Compile Include="Algorithms\Implementation\divisible-sum-pairs.cs" />
     <Compile Include="Algorithms\Implementation\drawing-book.cs" />
     <Compile Include="Algorithms\Implementation\electronics-shop.cs" />
+    <Compile Include="Algorithms\Implementation\encryption.cs" />
     <Compile Include="Algorithms\Implementation\equality-in-a-array.cs" />
     <Compile Include="Algorithms\Implementation\extra-long-factorials.cs" />
     <Compile Include="Algorithms\Implementation\find-digits.cs" />

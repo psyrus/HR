@@ -29,7 +29,6 @@ class Solution
                 {
                     knows.Add(i, new HashSet<int>());
                 }
- 
                 if (convertedVal == 1)
                 {
                     knows[i].Add(studentIndex);
