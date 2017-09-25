@@ -70,6 +70,7 @@
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds.cs" />
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
+    <Compile Include="Algorithms\Implementation\kaprekar-numbers.cs" />
     <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\non-divisible-subset.cs" />
