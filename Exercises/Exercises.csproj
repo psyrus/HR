@@ -49,6 +49,7 @@
     <Compile Include="Algorithms\Implementation\append-and-delete.cs" />
     <Compile Include="Algorithms\Implementation\apple-and-orange.cs" />
     <Compile Include="Algorithms\Implementation\beautiful-days-at-the-movies.cs" />
+    <Compile Include="Algorithms\Implementation\beautiful-triplets.cs" />
     <Compile Include="Algorithms\Implementation\between-two-sets.cs" />
     <Compile Include="Algorithms\Implementation\bon-appetit.cs" />
     <Compile Include="Algorithms\Implementation\breaking-best-and-worst-records.cs" />
