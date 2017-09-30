@@ -18,88 +18,135 @@ class Solution
     static void Main(String[] args)
     {
         int q = Convert.ToInt32(Console.ReadLine());
-        
+
         for (int a0 = 0; a0 < q; a0++)
         {
             int n = Convert.ToInt32(Console.ReadLine());
-            int[] containedBy = new int[n];
+
+            //Initialize the two container types for ball tracking
             Container[] containers = new Container[n];
-            int[][] M = new int[n][];
-            for (int M_i = 0; M_i < n; M_i++)
+            BallType[] ballTypes = new BallType[n];
+
+            //Instantitate two dictionaries that will be used to check the numbers of balls against container sizes
+            Dictionary<ulong, int> ballCounts = new Dictionary<ulong, int>();
+            Dictionary<ulong, int> ContainerBallCounts = new Dictionary<ulong, int>();
+
+            for (int inputRow = 0; inputRow < n; inputRow++)
             {
-                string[] M_temp = Console.ReadLine().Split(' ');
-                M[M_i] = Array.ConvertAll(M_temp, Int32.Parse);
-                containers[M_i] = new Container(n, M[M_i]);
-            }
-            // your code goes here
-            for (int i = 0; i < containers.Length; i++)
-            {
-                var thisContainer = containers[i];
-                Console.WriteLine($"This container [{i}]: {String.Join(" | ", thisContainer.ballsInContainer)}");
-                for (int j = 0; j < thisContainer.ballsInContainer.Length; j++)
+                string[] containerContents_temp = Console.ReadLine().Split(' ');
+                int[] containerContents = Array.ConvertAll(containerContents_temp, Int32.Parse);
+
+                //Add the row of data to the container tracker
+                containers[inputRow] = new Container(inputRow, containerContents);
+                ContainerBallCounts[containers[inputRow].totalBalls] = ContainerBallCounts.ContainsKey(containers[inputRow].totalBalls) ? ContainerBallCounts[containers[inputRow].totalBalls] + 1 : 1;
+
+                //For each ball in the data row, add it to or create the ball type tracker
+                for (int j = 0; j < n; j++)
                 {
-                    if (j == i)
+                    if (ballTypes[j] == null)
                     {
-                        continue;
+                        ballTypes[j] = new BallType(j, n);
                     }
-                    if (thisContainer.ballsInContainer[j] > 0 && containers[j].ballsInContainer[i] > 1)
-                    {
-                        Console.WriteLine($"It's possible to switch [{i}] from the container [{j}] to our container [{i}]");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Not possible to switch [{i}] from the container [{j}] to our container [{i}]");
-                    }
+
+                    ballTypes[j].AddContainerTracking(inputRow, containers[inputRow].GetBallCount(j));
                 }
             }
-            Console.WriteLine();
+
+            //Check if the number of balls of each type have a corresponding container with the same number of balls.
+            bool isPossible = true;
+            foreach (var balltype in ballTypes)
+            {
+                if (!isPossible)
+                {
+                    break;
+                }
+                if (ContainerBallCounts.ContainsKey(balltype.totalBalls) && ContainerBallCounts[balltype.totalBalls] > 0)
+                {
+                    ContainerBallCounts[balltype.totalBalls]--;
+                }
+                else
+                {
+                    isPossible = false;
+                }
+            }
+
+            //Final check to display the correct text
+            if (isPossible)
+            {
+                Console.WriteLine("Possible");
+            }
+            else
+            {
+                Console.WriteLine("Impossible");
+            }
+            
         }
+
     }
 
-    class Container
+    /// <summary>
+    /// Tracks the balls contained in a container
+    /// </summary>
+    public class Container
     {
-        public int[] ballsInContainer;
-
-        public Container(int size, int[] ballsSet)
+        int index;
+        int[] contents;
+        public ulong totalBalls = 0;
+        public Container(int inputRow, int[] containerContents)
         {
-            ballsInContainer = ballsSet;
-        }
-
-
-        public bool IsComplete()
-        {
-            bool foundNumber = false;
-            foreach (var item in ballsInContainer)
+            index = inputRow;
+            contents = containerContents;
+            foreach (var item in contents)
             {
-                if (item > 0)
-                {
-                    if (foundNumber)
-                    {
-                        return false;
-                    }
-                    foundNumber = true;
-                }
+                totalBalls += (uint)item;
             }
-            return true;
         }
 
-        public void SwapOut(int num)
+        internal int GetBallCount(int ballType)
         {
-            if (ballsInContainer[num] <= 0)
+            return contents[ballType];
+        }
+
+        public override string ToString()
+        {
+            string rt = $"Container of index [{index}] contains the following balls: (total of {totalBalls} balls)";
+            for (int i = 0; i < contents.Length; i++)
             {
-                throw new InvalidDataException("Trying to decrement a number that isn't in this container: " + num);
+                rt += $"\n\tBallType[{i}]: {contents[i]}";
             }
-            ballsInContainer[num]--;
-        }
-
-        public void SwapIn(int num)
-        {
-            ballsInContainer[num]++;
-        }
-
-        internal bool hasItem(int i)
-        {
-            return ballsInContainer[i] > 0;
+            return rt;
         }
     }
+
+    /// <summary>
+    /// Tracks which containers contain this ball type
+    /// </summary>
+    public class BallType
+    {
+        int index;
+        int[] containerHolding;
+        public ulong totalBalls = 0;
+        public BallType(int ballTypeIndex, int numTypes)
+        {
+            index = ballTypeIndex;
+            containerHolding = new int[numTypes];
+        }
+
+        internal void AddContainerTracking(int containerIndex, int numBalls)
+        {
+            containerHolding[containerIndex] += numBalls;
+            totalBalls += (uint)numBalls;
+        }
+
+        public override string ToString()
+        {
+            string rt = $"BallType [{index}] is contained in the following containers: (Total of {totalBalls} balls)";
+            for (int i = 0; i < containerHolding.Length; i++)
+            {
+                rt += $"\n\tContainer[{i}]: {containerHolding[i]}";
+            }
+            return rt;
+        }
+    }
+
 }
