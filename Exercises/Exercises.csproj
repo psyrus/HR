@@ -96,7 +96,6 @@
     <Compile Include="Algorithms\Warmup\plus-minus.cs" />
     <Compile Include="Algorithms\Warmup\staircase.cs" />
     <Compile Include="Algorithms\Warmup\time-conversion.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
