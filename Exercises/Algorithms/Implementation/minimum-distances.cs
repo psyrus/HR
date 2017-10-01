@@ -41,6 +41,5 @@ class Solution
         }
 
         Console.WriteLine(currentMinDistance);
-        Console.ReadLine();
     }
 }
