@@ -24,31 +24,47 @@ class Solution
         int problemsPerChapterPage = int.Parse(firstLine[1]);
 
         int specialProblemsCount = 0;
-        int totalPagesPassed = 1;
-        foreach (var item in secondLine)
-        {
-            int problems = int.Parse(item);
-            Chapter thisChapter = new Chapter(problemsPerChapterPage, problems);
-            specialProblemsCount += thisChapter.GetTotalSpecial(totalPagesPassed);
-            totalPagesPassed += thisChapter.totalPages;
-        }
+        int totalPagesPassed = 0;
 
+        for (int i = 0; i < numChapters; i++)
+        {
+            string item = secondLine[i];
+            int problems = int.Parse(item);
+            Chapter thisChapter = new Chapter(i + 1, problemsPerChapterPage, problems, totalPagesPassed + 1);
+            totalPagesPassed += thisChapter.totalPages;
+            if (totalPagesPassed <= problems)
+            {
+                specialProblemsCount += thisChapter.GetTotalSpecial();
+            }
+        }
         Console.WriteLine(specialProblemsCount);
     }
 
+    /// <summary>
+    /// Class to hold the chapters of a book
+    /// </summary>
     class Chapter
     {
-        int problemsPerPage;
-        int totalProblems;
         public int totalPages;
-        int overflowProblems;
-        int chapterNum;
-        public Chapter(int problemsPerPage, int totalProblems)
+        public int chapterNum;
+        private int problemsPerPage;
+        private int totalProblems;
+        private int startPage;
+
+        /// <summary>
+        /// Class to hold the chapters of a book
+        /// </summary>
+        /// <param name="chapterNum">Which chapter of the book does this chapter represent</param>
+        /// <param name="problemsPerPage">The book's problems per page count</param>
+        /// <param name="totalProblems">Number of problems in this chapter</param>
+        /// <param name="startPage">Which page of the book does this chapter start on</param>
+        public Chapter(int chapterNum, int problemsPerPage, int totalProblems, int startPage)
         {
             this.problemsPerPage = problemsPerPage;
             this.totalProblems = totalProblems;
-
-            overflowProblems = totalProblems % problemsPerPage;
+            this.chapterNum = chapterNum;
+            this.startPage = startPage;
+            int overflowProblems = totalProblems % problemsPerPage;
             totalPages = totalProblems / problemsPerPage;
             if (overflowProblems > 0)
             {
@@ -56,19 +72,19 @@ class Solution
             }
         }
 
-        internal int GetTotalSpecial(int chapterStartPage)
+        internal int GetTotalSpecial()
         {
             int totalSpecial = 0;
-            if (chapterStartPage > totalProblems)
+            if (this.startPage > this.totalProblems)
             {
                 return totalSpecial;
             }
 
             for (int pageOffset = 0; pageOffset < totalPages; pageOffset++)
             {
-                int currentPage = chapterStartPage + pageOffset;
-                int minProbIndex = pageOffset * problemsPerPage + 1;
-                int maxProbIndex = (pageOffset + 1) * problemsPerPage;
+                int currentPage = this.startPage + pageOffset;
+                int minProbIndex = pageOffset * this.problemsPerPage + 1;
+                int maxProbIndex = (pageOffset + 1) * this.problemsPerPage;
 
                 if (currentPage >= minProbIndex && currentPage <= maxProbIndex)
                 {
