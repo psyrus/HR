@@ -68,6 +68,7 @@
     <Compile Include="Algorithms\Implementation\equality-in-a-array.cs" />
     <Compile Include="Algorithms\Implementation\extra-long-factorials.cs" />
     <Compile Include="Algorithms\Implementation\find-digits.cs" />
+    <Compile Include="Algorithms\Implementation\flatland-space-stations.cs" />
     <Compile Include="Algorithms\Implementation\grading.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds.cs" />
