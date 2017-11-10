@@ -54,6 +54,7 @@
     <Compile Include="Algorithms\Implementation\bon-appetit.cs" />
     <Compile Include="Algorithms\Implementation\breaking-best-and-worst-records.cs" />
     <Compile Include="Algorithms\Implementation\cats-and-a-mouse.cs" />
+    <Compile Include="Algorithms\Implementation\cavity-map.cs" />
     <Compile Include="Algorithms\Implementation\chocolate-feast.cs" />
     <Compile Include="Algorithms\Implementation\circular-array-rotation.cs" />
     <Compile Include="Algorithms\Implementation\climbing-the-leaderboard.cs" />
@@ -67,9 +68,11 @@
     <Compile Include="Algorithms\Implementation\encryption.cs" />
     <Compile Include="Algorithms\Implementation\equality-in-a-array.cs" />
     <Compile Include="Algorithms\Implementation\extra-long-factorials.cs" />
+    <Compile Include="Algorithms\Implementation\fair-rations.cs" />
     <Compile Include="Algorithms\Implementation\find-digits.cs" />
     <Compile Include="Algorithms\Implementation\flatland-space-stations.cs" />
     <Compile Include="Algorithms\Implementation\grading.cs" />
+    <Compile Include="Algorithms\Implementation\happy-ladybugs.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds-revisited.cs" />
     <Compile Include="Algorithms\Implementation\jumping-on-the-clouds.cs" />
     <Compile Include="Algorithms\Implementation\kangaroo.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="Algorithms\Implementation\library-fine.cs" />
     <Compile Include="Algorithms\Implementation\lisa-workbook.cs" />
     <Compile Include="Algorithms\Implementation\magic-square-forming.cs" />
+    <Compile Include="Algorithms\Implementation\manasa-and-stones.cs" />
     <Compile Include="Algorithms\Implementation\migratory-birds.cs" />
     <Compile Include="Algorithms\Implementation\minimum-distances.cs" />
     <Compile Include="Algorithms\Implementation\non-divisible-subset.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="Algorithms\Implementation\sherlock-and-squares.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
     <Compile Include="Algorithms\Implementation\strange-advertising.cs" />
+    <Compile Include="Algorithms\Implementation\strange-code.cs" />
     <Compile Include="Algorithms\Implementation\taum-and-bday.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
     <Compile Include="Algorithms\Implementation\the-hurdle-race.cs" />
