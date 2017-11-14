@@ -16,11 +16,16 @@ class Solution
     /// <param name="args"></param>
     static void Main(String[] args)
     {
-        int t = Convert.ToInt32(Console.ReadLine());
+        long t = Convert.ToInt64(Console.ReadLine());
 
         int counterInitialValue = 3;
 
-        //Formula is 3 * 2 ^ iterations
-        // ((t - 1) / 3 + 1) * 3 - ((t - 1) % 3) = v
+        decimal x = Convert.ToDecimal(Math.Log((t + counterInitialValue) / (double)counterInitialValue, (double)2));
+        long set = (long)Math.Ceiling(x);
+        long max = (long)(counterInitialValue * (Math.Pow(2,set) - 1));
+
+        Console.WriteLine(max - t + 1);
+
+        //Formula is: 3*(2^(ceiling(log((T+3)/3,2)))-1)-T+1
     }
 }
