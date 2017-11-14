@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
+using System.Text;
+
 class Solution
 {
     /// <summary>
@@ -15,32 +18,76 @@ class Solution
         string[] tokens_n = Console.ReadLine().Split(' ');
         int n = Convert.ToInt32(tokens_n[0]);
         int m = Convert.ToInt32(tokens_n[1]);
-        string[] studentsTopics = new string[n];
+        int maxValue = (int)Math.Pow(2, m-1);
+        string[] topic = new string[n];
+        BigInteger[] studentKnownIndexes = new BigInteger[n];
 
-        Dictionary<int, HashSet<int>> knows = new Dictionary<int, HashSet<int>>();
-        for (int studentIndex = 0; studentIndex < n; studentIndex++)
+        BigInteger maxKnown = 0;
+        int numKnowMax = 0;
+        
+        for (int topic_i = 0; topic_i < n; topic_i++)
         {
-            studentsTopics[studentIndex] = Console.ReadLine();
-
-            for (int i = 0; i < m; i++)
+            studentKnownIndexes[topic_i] = Console.ReadLine().Aggregate(new BigInteger(), (b, c) => b * 2 + c - '0');
+            for (int j = 0; j < topic_i; j++)
             {
-                int convertedVal = studentsTopics[studentIndex][i] - '0';
-                if (!knows.ContainsKey(i))
+                BigInteger thisCombo = studentKnownIndexes[topic_i] | studentKnownIndexes[j];
+                if (thisCombo > maxKnown)
                 {
-                    knows.Add(i, new HashSet<int>());
+                    maxKnown = thisCombo;
+                    numKnowMax = 1;
                 }
-                if (convertedVal == 1)
+                else if (thisCombo == maxKnown)
                 {
-                    knows[i].Add(studentIndex);
+                    numKnowMax++;
                 }
             }
         }
+        string result = ToBinaryString(maxKnown);
+        
+        Console.WriteLine(GetTotalKnown(result));
+        Console.WriteLine(numKnowMax);
+    }
 
-        foreach (var item in knows)
+    private static int GetTotalKnown(string result)
+    {
+        int numKnown = 0;
+        foreach (var item in result)
         {
-            Console.Write(item.Key + " is known by: ");
-            Console.Write(String.Join(" ", item.Value));
-            Console.WriteLine();
+            if (item == '1')
+            {
+                numKnown++;
+            }
         }
+
+        return numKnown;
+    }
+
+    public static string ToBinaryString(BigInteger bigint)
+    {
+        var bytes = bigint.ToByteArray();
+        var idx = bytes.Length - 1;
+
+        // Create a StringBuilder having appropriate capacity.
+        var base2 = new StringBuilder(bytes.Length * 8);
+
+        // Convert first byte to binary.
+        var binary = Convert.ToString(bytes[idx], 2);
+
+        // Ensure leading zero exists if value is positive.
+        if (binary[0] != '0' && bigint.Sign == 1)
+        {
+            base2.Append('0');
+        }
+
+        // Append binary string to StringBuilder.
+        base2.Append(binary);
+
+        // Convert remaining bytes adding leading zeros.
+        for (idx--; idx >= 0; idx--)
+        {
+            base2.Append(Convert.ToString(bytes[idx], 2).PadLeft(8, '0'));
+        }
+
+        return base2.ToString();
     }
 }
