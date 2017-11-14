@@ -94,6 +94,7 @@
     <Compile Include="Algorithms\Implementation\sherlock-and-squares.cs" />
     <Compile Include="Algorithms\Implementation\sock-merchant.cs" />
     <Compile Include="Algorithms\Implementation\strange-advertising.cs" />
+    <Compile Include="Algorithms\Implementation\strange-code.cs" />
     <Compile Include="Algorithms\Implementation\taum-and-bday.cs" />
     <Compile Include="Algorithms\Implementation\the-birthday-bar.cs" />
     <Compile Include="Algorithms\Implementation\the-hurdle-race.cs" />
