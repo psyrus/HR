@@ -2,31 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-class Solution {
+class Solution
+{
 
-    static string kangaroo(int x1, int v1, int x2, int v2) {
+    static string kangaroo(int x1, int v1, int x2, int v2)
+    {
         // Complete this function
-        if(x2 > x1 && v2 > v1)
+        if (v1 == v2)
         {
             return "NO";
         }
-        int maxJumps = 10000;
 
-        int k1Pos = x1;
-        int k2Pos = x2;
-        for(int i = 0; i < maxJumps; i++)
-        {
-            k1Pos += v1;
-            k2Pos += v2;
-            if(k1Pos == k2Pos)
-            {
-                return "YES";
-            }
-        }
-        return "NO";
+        decimal n = (decimal)(x2 - x1) / (v1 - v2);
+        return n > 0 && n % 1 == 0 ? "YES" : "NO";
     }
 
-    static void Main(String[] args) {
+    static void Main(String[] args)
+    {
         string[] tokens_x1 = Console.ReadLine().Split(' ');
         int x1 = Convert.ToInt32(tokens_x1[0]);
         int v1 = Convert.ToInt32(tokens_x1[1]);
