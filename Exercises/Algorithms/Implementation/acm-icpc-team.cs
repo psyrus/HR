@@ -4,43 +4,57 @@ using System.IO;
 using System.Linq;
 class Solution
 {
-    /// <summary>
-    /// https://www.hackerrank.com/challenges/acm-icpc-team
-    /// You are given a list of N people who are attending ACM-ICPC World Finals. Each of them are either well versed in a topic or they are not. Find out the maximum number of topics a 2-person team can know. And also find out how many teams can know that maximum number of topics.
-    /// Note Suppose a, b, and c are three different people, then (a, b) and(b, c) are counted as two different teams.
-    /// </summary>
-    /// <param name="args"></param>
+
+    static int[] acmTeam(string[] topic)
+    {
+        int maxKnown = 0;
+        int maxKnowCount = 0;
+        // Calculate all possible groupings, check if each grouping's total known is the max, 
+        // if so increment the total number who know the max
+        for (int i = 0; i < topic.Length - 1; i++)
+        {
+            for (int j = i + 1; j < topic.Length; j++)
+            {
+                int totalKnown = GetTotalKnown(topic[i], topic[j]);
+                if (totalKnown > maxKnown)
+                {
+                    maxKnown = totalKnown;
+                    maxKnowCount = 1;
+                }
+                else if (totalKnown == maxKnown)
+                {
+                    maxKnowCount++;
+                }
+            }
+        }
+
+        int[] returnstuff = { maxKnown, maxKnowCount };
+        return returnstuff;
+    }
+
+    private static int GetTotalKnown(string v1, string v2)
+    {
+        int total = 0;
+        for (int i = 0; i < (v1.Length + v2.Length) / 2; i++)
+        {
+            total += v1[i] == '1' || v2[i] == '1' ? 1 : 0;
+        }
+        return total;
+    }
+
     static void Main(String[] args)
     {
         string[] tokens_n = Console.ReadLine().Split(' ');
         int n = Convert.ToInt32(tokens_n[0]);
         int m = Convert.ToInt32(tokens_n[1]);
-        string[] studentsTopics = new string[n];
-
-        Dictionary<int, HashSet<int>> knows = new Dictionary<int, HashSet<int>>();
-        for (int studentIndex = 0; studentIndex < n; studentIndex++)
+        string[] topic = new string[n];
+        for (int topic_i = 0; topic_i < n; topic_i++)
         {
-            studentsTopics[studentIndex] = Console.ReadLine();
-
-            for (int i = 0; i < m; i++)
-            {
-                int convertedVal = studentsTopics[studentIndex][i] - '0';
-                if (!knows.ContainsKey(i))
-                {
-                    knows.Add(i, new HashSet<int>());
-                }
-                if (convertedVal == 1)
-                {
-                    knows[i].Add(studentIndex);
-                }
-            }
+            topic[topic_i] = Console.ReadLine();
         }
+        int[] result = acmTeam(topic);
+        Console.WriteLine(String.Join("\n", result));
 
-        foreach (var item in knows)
-        {
-            Console.Write(item.Key + " is known by: ");
-            Console.Write(String.Join(" ", item.Value));
-            Console.WriteLine();
-        }
+
     }
 }
