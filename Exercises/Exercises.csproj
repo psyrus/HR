@@ -109,6 +109,8 @@
     <Compile Include="Algorithms\Warmup\plus-minus.cs" />
     <Compile Include="Algorithms\Warmup\staircase.cs" />
     <Compile Include="Algorithms\Warmup\time-conversion.cs" />
+    <Compile Include="Data Structures\Arrays\2d-array.cs" />
+    <Compile Include="Data Structures\Arrays\array-ds.cs" />
     <Compile Include="Exam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
