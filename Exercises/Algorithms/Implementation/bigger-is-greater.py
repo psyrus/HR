@@ -15,6 +15,34 @@ import sys
 
 
 def biggerIsGreater(w):
+    # Define loop indeces:
+    rightmostDecendingSequenceStartIndex = len(w) - 1
+    swapCandidateIndex = len(w) - 1
+
+    wordAsList = list(w)
+
+    while rightmostDecendingSequenceStartIndex > 0 and ord(w[rightmostDecendingSequenceStartIndex-1]) >= ord(w[rightmostDecendingSequenceStartIndex]):
+        rightmostDecendingSequenceStartIndex -= 1
+
+    if rightmostDecendingSequenceStartIndex <= 0:
+        return "no answer"
+
+    swapTargetIndex = rightmostDecendingSequenceStartIndex - 1
+
+    while swapCandidateIndex > 0 and ord(w[swapCandidateIndex]) <= ord(w[swapTargetIndex]):  # Why i - 1?
+        swapCandidateIndex -= 1
+
+    temp = wordAsList[swapTargetIndex]
+    wordAsList[swapTargetIndex] = wordAsList[swapCandidateIndex]
+    wordAsList[swapCandidateIndex] = temp
+
+    sortedSuffix = wordAsList[rightmostDecendingSequenceStartIndex:]
+    sortedSuffix.reverse()
+
+    return ''.join(wordAsList[:rightmostDecendingSequenceStartIndex] + sortedSuffix)
+
+
+def biggerIsGreaterOldBadWay(w):
     # Start from the right side of the string, checking each char to see if there is something LOWER than it in value that can be swapped out to make the overall total rise (the least)
     indexSwapCandidates = []
     wordArray = list(w)
@@ -74,11 +102,15 @@ if __name__ == "__main__":
     # fptr.close().
 
     cases = [
-        "bb"
+        "bb",
+        "lmno",
+        "dkhc"
     ]
 
     expectedOutput = [
-        "no answer"
+        "no answer",
+        "lmon",
+        "hcdk"
     ]
 
     for i, c in enumerate(cases):
