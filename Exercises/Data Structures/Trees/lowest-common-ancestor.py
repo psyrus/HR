@@ -50,14 +50,29 @@ class Node:
 
 
 def lca(root, v1, v2):
-    node = root
-    lca_node = node
     # check if v1 or v2 are to the left
     ## If both left -> new LCA candidate is node.left
     # check if v1 or v2 are to the right
     ## If both right -> new LCA candidate is node.right
 
     # If one is smaller than right, and one is larger than right, this is our lowest common ancestor (this is where they diverge)
+    node = root
+    lca_found = False
+    while not lca_found:
+        both_left = v1 < node.info and v2 < node.info
+        both_right = v1 > node.info and v2 > node.info
+
+        if both_left:
+            node = node.left
+            continue
+        elif both_right:
+            node = node.right
+            continue
+        else:
+            lca_found = True
+
+    return node
+       
 
 
 
