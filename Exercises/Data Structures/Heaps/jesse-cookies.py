@@ -26,6 +26,7 @@ def cookies(k, original_sweetness):
         return -1
     # new_cookie = least_sweet + 2 * next_least_sweet
     while True:
+        original_sweetness.sort()
         if all_compliant(original_sweetness, k):
             break
         elif len(original_sweetness) == 1:
@@ -45,7 +46,7 @@ if __name__ == '__main__':
 
     k = 7
     # list = [1, 2, 3, 9, 10, 12]
-    file_path = r"C:\Users\Trevor\Downloads\input11.txt"
+    file_path = r"C:\Users\Trevor\Downloads\input05.txt"
     file = open(file_path, "r").readlines()
     k = int (file[0].split(' ')[1])
     list = [int(i) for i in file[1].split(' ')]
