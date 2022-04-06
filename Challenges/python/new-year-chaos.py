@@ -27,7 +27,7 @@ def minimumBribes(q):
             print("Too chaotic")
             return
         # Need to prevennt a timeout here by skipping loop items we don't need
-        # Don't need to loop from 0, but just from its original index (val - 2)
+        # Don't need to loop from 0, but just from its original index minus one position to account for swaps (val - 2)
         loop_start = 0 if val == 1 else val - 2
         for i in range(loop_start, idx):
             if q[i] > val:
