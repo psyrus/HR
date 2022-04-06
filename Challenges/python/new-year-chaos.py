@@ -18,21 +18,17 @@ import sys
 # original spot in queue is held on a "sticker" on each person
 def minimumBribes(q):
     # First need to check if any item is >2 lower than it originally was -> Instant return of "too chaotic"
-    # Otherwise just return the total delta of positions
+    # Otherwise just return the total delta of positions of anything that is higher than a current position's expected value
     total_bribes = 0
-    should_have_seen_but_havent = []
     for idx, val in enumerate(q):
         exp_val = idx + 1
         val_diff = val - exp_val
         if val_diff > 2:
             print("Too chaotic")
             return
-        if val_diff > 0:
-            should_have_seen_but_havent = should_have_seen_but_havent + [i for i in list(range(exp_val, val)) if i not in q[0:idx]]
-        if val in should_have_seen_but_havent:
-            should_have_seen_but_havent.remove(val)
-        not_seen_higher = set([i for i in should_have_seen_but_havent if i < val])
-        total_bribes += len(not_seen_higher)
+        for i in range(0, idx):
+            if q[i] > val:
+                total_bribes += 1
 
     print(total_bribes)
 
